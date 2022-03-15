@@ -17,7 +17,7 @@ const mysql = require("mysql");
 const dateFormatting= require("./scripts/dateFormatting");
 
 //Define port for server
-var port = 8000;
+var port = process.env.PORT || 8000;
 
 app.use(express.urlencoded({extended: true}))
 
