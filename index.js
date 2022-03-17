@@ -17,7 +17,7 @@ const mysql = require("mysql");
 const dateFormatting= require("./scripts/dateFormatting");
 
 //Define port for server
-var port = process.env.PORT || 8000;
+var port = 8000;
 
 app.use(express.urlencoded({extended: true}))
 
@@ -40,14 +40,14 @@ app.get('/', (req, res)=>{
     res.render('index')
 });
 
-// Below servers as navigation for the webpage
+// Below serves as navigation for the webpage
 
 app.get('/register', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "group5",
-		password: "pass",
-		database: "travelexperts"
+		user: "db_user",
+		password: "P@s$w0rd123!",
+		database: "TravelExperts"
     });
     //Pulls the Agent name data from the database, then passes it down to the register page
     var agentNameQuery = "SELECT AgtFirstName, AgtLastName FROM agents"
@@ -61,9 +61,9 @@ app.get('/register', (req, res)=>{
 app.get('/contact', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "group5",
-		password: "pass",
-		database: "travelexperts"
+		user: "db_user",
+		password: "P@s$w0rd123!",
+		database: "TravelExperts"
     });
     
     //Pulls agents name , phone number and e-mail from the database and passes to contact page    
@@ -102,9 +102,9 @@ app.get('/thankyou', (req, res)=>{
 app.post('/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "group5",
-		password: "pass",
-		database: "travelexperts"
+		user: "db_user",
+		password: "P@s$w0rd123!",
+		database: "TravelExperts"
     });
     // Checks the path that was redirected from
     if (req.query.path == "/customerhome"){
@@ -211,9 +211,9 @@ app.post('/login', (req, res)=>{
 app.post('/orderPlaced', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "group5",
-		password: "pass",
-		database: "travelexperts"
+		user: "db_user",
+		password: "P@s$w0rd123!",
+		database: "TravelExperts"
     });
     var splitPackage = req.body.package.split(" - ")
     var bookingNum = "ABC" + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9)) + String(Math.floor(Math.random()*9))
@@ -243,9 +243,9 @@ app.post('/orderPlaced', (req, res)=>{
 app.post('/thankyou', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
-		user: "group5",
-		password: "pass",
-		database: "travelexperts"
+		user: "db_user",
+		password: "P@s$w0rd123!",
+		database: "TravelExperts"
     });
     // The following code is used to verify that the email being
     // registered with has not been used in the with another account.
@@ -298,9 +298,9 @@ app.get("/getpackages", (req, res)=>{
     var getConnection = ()=>{
         return mysql.createConnection({
             host: "localhost",
-            user: "group5",
-            password: "pass", /* Need to make sure that this user with precisely this password is authorised at phpMyAdmin */
-            database: "travelexperts"
+            user: "db_user",
+            password: "P@s$w0rd123!",
+            database: "TravelExperts"
         });
     };
 
