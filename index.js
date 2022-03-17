@@ -307,7 +307,7 @@ app.get("/getpackages", (req, res)=>{
     var conn = getConnection();
     conn.connect((err)=>{
         if (err) throw err;   
-        var sql = "SELECT PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice FROM packages";
+        var sql = "SELECT PkgName, PkgStartDate, PkgEndDate, PkgDesc, CAST(PkgBasePrice as money) FROM packages";
         /* This query ensures that that first & last columns (Package ID & Agency's Commission) are not displayed on the Packages page.
             Normally, travel agencies do not disclose their commission openly and hide it inside the package's total price. */ 
         conn.query(sql, (err, results, fields)=>{
