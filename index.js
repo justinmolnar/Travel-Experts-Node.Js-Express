@@ -36,13 +36,13 @@ app.listen(port, ()=>{
 
 
 // Server the homepage by default
-app.get('/te-node/', (req, res)=>{
+app.get('/te-node', (req, res)=>{
     res.render('index')
 });
 
 // Below serves as navigation for the webpage
 
-app.get('/te-node/register', (req, res)=>{
+app.get('/te-node-register', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -58,7 +58,7 @@ app.get('/te-node/register', (req, res)=>{
     con.end()
 });
 
-app.get('/te-node/contact', (req, res)=>{
+app.get('/te-node-contact', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -86,11 +86,11 @@ app.get('/te-node/contact', (req, res)=>{
     });
 });
 
-app.get('/te-node/login', (req, res)=>{
+app.get('/te-node-login', (req, res)=>{
     res.render("login")
 });
 
-app.get('/te-node/thankyou', (req, res)=>{
+app.get('/te-node-thankyou', (req, res)=>{
     res.render("thankyou")
 });
 
@@ -99,7 +99,7 @@ app.get('/te-node/thankyou', (req, res)=>{
 // When login button is clicked, the email is checked againts the database,
 // if the email exists, it pulls the password associated with it.
 // The password is compared with with submitted value, if they match the user is served the requested page.
-app.post('/te-node/login', (req, res)=>{
+app.post('/te-node-login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -107,7 +107,7 @@ app.post('/te-node/login', (req, res)=>{
 		database: "TravelExperts"
     });
     // Checks the path that was redirected from
-    if (req.query.path == "/te-node/customerhome"){
+    if (req.query.path == "/te-node-customerhome"){
         con.connect((err)=>{
             if (err) throw err;
             // Selects the customer based on email provided
@@ -116,7 +116,7 @@ app.post('/te-node/login', (req, res)=>{
                 if (err) throw err;
                 // Checks if the email exists in the database
                 if (results.length == 0){
-                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node/login?path=${req.query.path}"; </script>`);
+                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node-login?path=${req.query.path}"; </script>`);
                 }else{
                     // Checks if the provided password matches what is recorded in the database
                     if (req.body.password == results[0].password){
@@ -154,12 +154,12 @@ app.post('/te-node/login', (req, res)=>{
                             });
                         });
                     }else{
-                        res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href ="/te-node/login?path=${req.query.path}"; </script>`);
+                        res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href ="/te-node-login?path=${req.query.path}"; </script>`);
                     }
                 }
             });
         });
-    }else if(req.query.path =="/te-node/order"){
+    }else if(req.query.path =="/te-node-order"){
         con.connect((err)=>{
             if (err) throw err;
             // Selects the customer based on email provided
@@ -168,7 +168,7 @@ app.post('/te-node/login', (req, res)=>{
                 if (err) throw err;
                 // Checks if the email exists in the database
                 if (results.length == 0){
-                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node/login?path=${req.query.path}"; </script>`);
+                    res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node-login?path=${req.query.path}"; </script>`);
                 }else{
                     // Checks if the provided password matches what is recorded in the database
                     if (req.body.password == results[0].password){
@@ -196,7 +196,7 @@ app.post('/te-node/login', (req, res)=>{
                             });
                         });
                     }else{
-                        res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node/login?path=${req.query.path}"; </script>`);
+                        res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node-login?path=${req.query.path}"; </script>`);
                     }
                 }
             });
@@ -208,7 +208,7 @@ app.post('/te-node/login', (req, res)=>{
 
 // Post method that inserts account data into database
 // Serves orderPlaced landing page on successful completion
-app.post('/te-node/orderPlaced', (req, res)=>{
+app.post('/te-node-orderPlaced', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -240,7 +240,7 @@ app.post('/te-node/orderPlaced', (req, res)=>{
     
 });
 
-app.post('/te-node/thankyou', (req, res)=>{
+app.post('/te-node-thankyou', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -259,7 +259,7 @@ app.post('/te-node/thankyou', (req, res)=>{
         con.query(emailQuery, (err, results)=>{
             if (err) throw err;
             if (results.length != 0){
-                res.send('<script>alert("That email is already in use on this site!"); window.location.href = "/te-node/register"; </script>');
+                res.send('<script>alert("That email is already in use on this site!"); window.location.href = "/te-node-register"; </script>');
                 return false;
             }else{
                 var nameArray = req.body.agent.split(" ")
@@ -294,7 +294,7 @@ app.post('/te-node/thankyou', (req, res)=>{
 
 /* This block below was created by Marat Nikitin*/
 /*  data for /getpackages is retrieved from the database using an sql query:*/
-app.get("/te-node/getpackages", (req, res)=>{
+app.get("/te-node-getpackages", (req, res)=>{
     var getConnection = ()=>{
         return mysql.createConnection({
             host: "localhost",
@@ -334,17 +334,17 @@ app.get("/te-node/getpackages", (req, res)=>{
 // Redirects the user to the login page
 // Passes the path down to the login page as part of the query
 // to give context to login page
-app.get('/te-node/customerhome', (req, res)=>{
+app.get('/te-node-customerhome', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
-    res.redirect('/te-node/login?path=' + pathRequested)
+    res.redirect('/te-node-login?path=' + pathRequested)
 });
 
 // Redirects the user to the login page
 // Passes the path down to the login page as part of the query
 // to give context to login page
-app.get('/te-node/order', (req, res)=>{
+app.get('/te-node-order', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
-    res.redirect('/te-node/login?path=' + pathRequested)
+    res.redirect('/te-node-login?path=' + pathRequested)
 })
 // Catches 404 errors and renders 404 error page
 app.use((req, res)=>{
