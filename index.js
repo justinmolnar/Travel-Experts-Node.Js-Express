@@ -22,10 +22,10 @@ var port = 8000;
 app.use(express.urlencoded({extended: true}))
 
 // Establish Static folders
-app.use(express.static("./scripts"))
-app.use(express.static("./views", {"extensions": ["html", "htm"]}))
-app.use(express.static("./assets"))
-app.use(express.static("./styles"))
+app.use(express.static("scripts"))
+app.use(express.static("views", {"extensions": ["html", "htm"]}))
+app.use(express.static("assets"))
+app.use(express.static("styles"))
 
 app.set("view engine", "ejs")
 
