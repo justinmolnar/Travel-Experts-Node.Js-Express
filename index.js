@@ -36,7 +36,7 @@ app.listen(port, ()=>{
 
 
 // Server the homepage by default
-app.get('/', (req, res)=>{
+app.get('/te-node', (req, res)=>{
     res.render('index')
 });
 
