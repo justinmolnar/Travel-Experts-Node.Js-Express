@@ -14,7 +14,7 @@ const dayjs = require("dayjs");
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-const dateFormatting= require("./scripts/dateFormatting");
+const dateFormatting= require("./repos/Travel-Experts-Node.Js-Express/scripts/dateFormatting");
 
 //Define port for server
 var port = 8000;
@@ -22,10 +22,10 @@ var port = 8000;
 app.use(express.urlencoded({extended: true}))
 
 // Establish Static folders
-app.use(express.static("scripts"))
-app.use(express.static("views", {"extensions": ["html", "htm"]}))
-app.use(express.static("assets"))
-app.use(express.static("styles"))
+app.use(express.static("./repos/Travel-Experts-Node.Js-Express/scripts"))
+app.use(express.static("./repos/Travel-Experts-Node.Js-Express/views", {"extensions": ["html", "htm"]}))
+app.use(express.static("./repos/Travel-Experts-Node.Js-Express/assets"))
+app.use(express.static("./repos/Travel-Experts-Node.Js-Express/styles"))
 
 app.set("view engine", "ejs")
 
