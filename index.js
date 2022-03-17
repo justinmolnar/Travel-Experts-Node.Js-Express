@@ -42,7 +42,7 @@ app.get('/', (req, res)=>{
 
 // Below serves as navigation for the webpage
 
-app.get('/register', (req, res)=>{
+app.get('/te-node/register', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -58,7 +58,7 @@ app.get('/register', (req, res)=>{
     con.end()
 });
 
-app.get('/contact', (req, res)=>{
+app.get('/te-node/contact', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -86,11 +86,11 @@ app.get('/contact', (req, res)=>{
     });
 });
 
-app.get('/login', (req, res)=>{
+app.get('/te-node/login', (req, res)=>{
     res.render("login")
 });
 
-app.get('/thankyou', (req, res)=>{
+app.get('/te-node/thankyou', (req, res)=>{
     res.render("thankyou")
 });
 
@@ -99,7 +99,7 @@ app.get('/thankyou', (req, res)=>{
 // When login button is clicked, the email is checked againts the database,
 // if the email exists, it pulls the password associated with it.
 // The password is compared with with submitted value, if they match the user is served the requested page.
-app.post('/login', (req, res)=>{
+app.post('/te-node/login', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -107,7 +107,7 @@ app.post('/login', (req, res)=>{
 		database: "TravelExperts"
     });
     // Checks the path that was redirected from
-    if (req.query.path == "/customerhome"){
+    if (req.query.path == "/te-node/customerhome"){
         con.connect((err)=>{
             if (err) throw err;
             // Selects the customer based on email provided
@@ -159,7 +159,7 @@ app.post('/login', (req, res)=>{
                 }
             });
         });
-    }else if(req.query.path =="/order"){
+    }else if(req.query.path =="/te-node/order"){
         con.connect((err)=>{
             if (err) throw err;
             // Selects the customer based on email provided
@@ -208,7 +208,7 @@ app.post('/login', (req, res)=>{
 
 // Post method that inserts account data into database
 // Serves orderPlaced landing page on successful completion
-app.post('/orderPlaced', (req, res)=>{
+app.post('/te-node/orderPlaced', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -240,7 +240,7 @@ app.post('/orderPlaced', (req, res)=>{
     
 });
 
-app.post('/thankyou', (req, res)=>{
+app.post('/te-node/thankyou', (req, res)=>{
     const con = mysql.createConnection({
         host: "localhost",
 		user: "db_user",
@@ -294,7 +294,7 @@ app.post('/thankyou', (req, res)=>{
 
 /* This block below was created by Marat Nikitin*/
 /*  data for /getpackages is retrieved from the database using an sql query:*/
-app.get("/getpackages", (req, res)=>{
+app.get("/te-node/getpackages", (req, res)=>{
     var getConnection = ()=>{
         return mysql.createConnection({
             host: "localhost",
@@ -334,17 +334,17 @@ app.get("/getpackages", (req, res)=>{
 // Redirects the user to the login page
 // Passes the path down to the login page as part of the query
 // to give context to login page
-app.get('/customerhome', (req, res)=>{
+app.get('/te-node/customerhome', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
-    res.redirect('/login?path=' + pathRequested)
+    res.redirect('/te-node/login?path=' + pathRequested)
 });
 
 // Redirects the user to the login page
 // Passes the path down to the login page as part of the query
 // to give context to login page
-app.get('/order', (req, res)=>{
+app.get('/te-node/order', (req, res)=>{
     var pathRequested = encodeURIComponent(`${req.url}`);
-    res.redirect('/login?path=' + pathRequested)
+    res.redirect('/te-node/login?path=' + pathRequested)
 })
 // Catches 404 errors and renders 404 error page
 app.use((req, res)=>{
