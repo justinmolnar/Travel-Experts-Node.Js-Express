@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    Font-Family: 'Monda', Sans-Serif;
+    font-size: 16px;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.icon{
+    font-size: 2.5rem;
+}
+
+nav {
+    padding: 2rem 0 4rem 0;
+}
+
+h1 {
+    Font-Family: 'Julius Sans One', Sans-Serif;
+    Font-Size: 35px;
+}
+
+h2, h3, h4, h5, h6 {
+    Font-Family: 'Julius Sans One', Sans-Serif;
+}
+
+nav ul {
+    list-style: none;
+    list-style-type: none;
+    text-align: right;
+    font-size: 1.5rem;
+}
+
+nav ul li {
+    float:right;
+    padding: 0 2em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:#333;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color:#777;
+}
+
+article, header, footer {
+    width: 85%;
+    margin: 0 auto;
+}
+
+
+article {
+    padding: 3em 0;
+}
+
+.bg {
+    background-color: #ddd;
+}
+
+html { 
+    scroll-behavior: smooth;
+}
+
+p a {
+    text-decoration: none;
+    color:#222;
+    transition: 0.3s;
+}
+
+p a:hover {
+    color: #444;
+}
+
+
+.testimonial {
+    background-color: lightgray;
+    width: 60%;
+    margin: auto;
+    box-shadow: 10px 10px gray;
+    margin-bottom: 3rem;
+}
+
+.textimonial-text {
+    background-color: lightgray;
+    width: 25em;
+}
+
+.testimonial .testimonial-pic {
+
+    background-color: #333;
+    width: 5em;
+    height: 5em;
+    border-radius:50%;
+    margin: 1em 2em !important;
+
+}
+
+.testimonial .main-content {
+    min-height: 0px;
+    display: grid;
+    grid-auto-flow: row;
+}
+
+.testimonial .grid {
+    margin-top: 1em !important;
+    margin-bottom: 0px;
+}
+
+.main-content {
+    display: grid;
+    grid-auto-flow: row;
+    padding: 0 1rem;
+    gap: 1em;
+}
+
+.main-content .grid {
+    max-width: 100%;
+    margin: auto;
+}
+
+footer {
+    padding: 3rem 0;
+    font-size: 1.3rem;
+}
+
+footer input, footer textarea, footer button {
+    line-height: 2rem;
+    font-size: 1.5rem;
+    margin:  .5rem 0;
+    Font-Family: 'Monda', Sans-Serif;
+}
+
+footer input, footer button {
+    width: 32%;
+}
+
+footer button {
+    background-color: #333;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+    color: #eee;
+}
+
+footer button:hover {
+    background-color: #777;
+    cursor: pointer;
+}
+
+footer textarea {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    justify-content:space-between;
+}
+
+
+@media screen and (min-width : 1024px){
+
+    article, header, footer {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .testimonial .main-content {
+        grid-auto-flow: column;
+        padding-bottom: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .main-content {
+		grid-auto-flow: column;
+		margin: auto;
+	}
+    
+    .main-content .grid {
+        max-width:40em;
+        margin:0 auto;
+    }
+
+}

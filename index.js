@@ -41,6 +41,10 @@ app.get('/te-node', (req, res)=>{
 });
 
 // Below serves as navigation for the webpage
+app.get('/', (req, res)=>{
+    res.sendFile('index.html')
+});
+
 
 app.get('/te-node-register', (req, res)=>{
     const con = mysql.createConnection({
