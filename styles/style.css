@@ -57,6 +57,20 @@ article, header, footer {
     margin: 0 auto;
 }
 
+.hero {
+    height: 70vh;
+    display:flex;
+    align-items: center;
+    line-height: 1.5;
+}
+
+.hero h1 {
+    font-size: 4rem;
+}
+
+.hero article p, .hero article h1 {
+    width: 80%;
+}
 
 article {
     padding: 3em 0;
@@ -192,6 +206,10 @@ footer textarea {
 
     .projects div {
         width: 40%;
+    }
+
+    .hero article p, .hero article h1 {
+        width: 50%;
     }
 
     /* .testimonial .main-content {
