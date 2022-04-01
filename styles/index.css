@@ -14,6 +14,7 @@
     --orange-accent: #f5ab71;
     --sienna: #e76f51ff;
     --sienna-trans: #e76f51e6;
+    --sienna-trans2: #e76f5144;
 
     /* Temparary way to change colors, Comment out defult and Uncomment any other group of colors */
 
@@ -64,6 +65,7 @@ body {
     margin: 0;
     color:var(--text-color);
     background-color: var(--yellow);
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -88,6 +90,7 @@ below is a media query to make into column on larger screens */
     gap: 1em;
     padding-bottom: 3em;
     min-height: 80vh;
+    flex:1;
 }
 
 .main-content .grid {

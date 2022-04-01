@@ -14,8 +14,8 @@
     max-height: 1.5em;
     padding: .22em 0 .22em 5%;
     margin: 0;
-    float:left
-
+    float:left;
+    z-index: 10;
 }
 
 /* Stick to top of screen and styling for nav bar */
@@ -33,7 +33,7 @@ nav {
     justify-content: space-between;
     padding: .22em;
     flex-wrap: wrap;
-
+    z-index: 10;
 }
 
 nav ul {
@@ -46,11 +46,13 @@ nav ul {
     display:none; /* Don't display on mobile unless the below class .show overwrites */
     flex-direction: column;
     margin: auto;
+    z-index: 10;
 }
 
 /* Class added/removed if user clicks hamburger button in mobile view */
 .show {
     display: flex;
+    z-index: 10;
 }
 
 
@@ -61,6 +63,7 @@ nav li  {
     letter-spacing: 0.1em;
     text-decoration: none;
     transition: 0.3s;
+    z-index: 10;
 }
 
 nav li a {
@@ -68,6 +71,7 @@ nav li a {
     letter-spacing: 0.1em;
     text-decoration: none;
     transition:  0.3s;
+    z-index: 10;
 }
 
 nav a:hover {
@@ -113,6 +117,7 @@ footer {
     letter-spacing: 0.1em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    width: 70%;
 }
 
 footer a {
