@@ -115,7 +115,7 @@ app.post('/te-node-login', (req, res)=>{
         con.connect((err)=>{
             if (err) throw err;
             // Selects the customer based on email provided
-            var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
+            var checkPassword = `SELECT CustPassword, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
             con.query(checkPassword, (err, results)=>{
                 if (err) throw err;
                 // Checks if the email exists in the database
@@ -123,12 +123,12 @@ app.post('/te-node-login', (req, res)=>{
                     res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node-login?path=${req.query.path}"; </script>`);
                 }else{
                     // Checks if the provided password matches what is recorded in the database
-                    if (req.body.password == results[0].password){
+                    if (req.body.password == results[0].CustPassword){
                         // Collects customer data from database
                         var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
                         con.query(customerQuery, (err, results)=>{
                             if (err) throw err;
-                            delete results[0].password
+                            delete results[0].CustPassword
                             // Humanizes the Agent... converts from AgentId to Agent name
                             var agentName = `SELECT AgtFirstName, AgtLastName FROM agents WHERE AgentId="${results[0].AgentId}"`
                             var customerData = results;
@@ -167,7 +167,7 @@ app.post('/te-node-login', (req, res)=>{
         con.connect((err)=>{
             if (err) throw err;
             // Selects the customer based on email provided
-            var checkPassword = `SELECT password, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
+            var checkPassword = `SELECT CustPassword, CustomerId FROM customers WHERE CustEmail="${req.body.username}"`
             con.query(checkPassword, (err, results)=>{
                 if (err) throw err;
                 // Checks if the email exists in the database
@@ -175,12 +175,12 @@ app.post('/te-node-login', (req, res)=>{
                     res.send(`<script>alert("Username and/or password are incorrect!"); window.location.href = "/te-node-login?path=${req.query.path}"; </script>`);
                 }else{
                     // Checks if the provided password matches what is recorded in the database
-                    if (req.body.password == results[0].password){
+                    if (req.body.password == results[0].CustPassword){
                         // Collects customer data from database
                         var customerQuery = `SELECT * FROM customers WHERE CustomerId="${results[0].CustomerId}"`
                         con.query(customerQuery, (err, results)=>{
                             if (err) throw err;
-                            delete results[0].password
+                            delete results[0].CustPassword
                             // Collects package data from database
                             var packagesQuery = `SELECT PackageId, PkgName, PkgStartDate FROM packages`
                             var customerData = results[0];
@@ -275,7 +275,7 @@ app.post('/te-node-thankyou', (req, res)=>{
                     var agent = results[0].AgentId;
                     //Inserts the provided customer information into the Travel Experts database
                     var insertCustomer = "INSERT INTO customers (CustFirstName, CustLastName, CustAddress,"
-                    + " CustCity, CustProv, CustPostal, CustCountry, CustHomePhone, CustBusPhone, CustEmail, AgentId, password)"
+                    + " CustCity, CustProv, CustPostal, CustCountry, CustHomePhone, CustBusPhone, CustEmail, AgentId, CustPassword)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     con.query(
                         insertCustomer, 
